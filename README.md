@@ -63,7 +63,19 @@ AI--First-Coding-Loop-CC/
 
 ## 怎么用(三种姿势)
 
-### 姿势 1:**拷贝**(最直接)
+### 姿势 0:**Local-only**(★ 起步 / 单人开发,$0,完全吃 Claude Code 订阅)
+
+不付远端 API 钱,push 前在本地用 Claude Code 跑三趟评审:
+
+```bash
+# 在你 push 前
+bash <(curl -sSL https://raw.githubusercontent.com/WILLcis/AI--First-Coding-Loop-CC/main/core/scripts/local_review.sh) --combined --copy
+# 输出已自动复制到剪贴板,贴进 Claude Code 一次跑完三趟
+```
+
+何时用:**单人开发、纯测试、不需要 required check**。详见 [`docs/local-vs-remote-review.md`](docs/local-vs-remote-review.md) 的 A/B/C 路线决策表。
+
+### 姿势 1:**拷贝**(全套自愈环,适合做主力 harness 的仓库)
 
 ```bash
 # 在你的目标仓库根目录
@@ -107,8 +119,6 @@ jobs:
     secrets: { LLM_API_KEY: ${{ secrets.LLM_API_KEY }} }
     with:   { provider: openai, model_default: gpt-5.5 }
 ```
-
-> ⚠ 调用方仓需要在 Settings → Actions → General → Workflow permissions 选 "Read and write permissions",否则 reusable workflow 启动失败。
 
 **就这些**——下一个 PR 自动跑三趟评审,无需拷贝任何文件,本仓升级你 `@main` 改成 `@v2.3` 就跟上。
 完整参数、各厂商示例、与 install.sh 拷贝版的取舍,见 [`docs/reusable-workflows.md`](docs/reusable-workflows.md)。
