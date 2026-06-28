@@ -12,8 +12,7 @@ on:
 jobs:
   review:
     uses: ./.github/workflows/ai-review-reusable.yml
-    secrets:
-      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+    secrets: inherit
     with:
       provider: ${{ vars.LLM_PROVIDER }}
       model_default: ${{ vars.LLM_MODEL }}
