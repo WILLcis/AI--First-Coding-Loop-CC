@@ -156,3 +156,4 @@ vars.LLM_MODEL_VERIFIER_SECURITY   per-role 模型覆盖(其余 role 同理)
 - Anthropic Claude / OpenAI / DeepSeek 等所有把"脚手架引擎化"变可能的模型厂商
 
 License:MIT(添加 LICENSE 文件前请你决定)
+// post-v2.5.1 verification
