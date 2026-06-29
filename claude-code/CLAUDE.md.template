@@ -13,6 +13,16 @@
 **任何写码 agent**(implementer / explorer / verifier-quality 等)**动手前**,必须先吃这份:
 - [`skills/agent-coding-discipline/SKILL.md`](skills/agent-coding-discipline/SKILL.md) — 9 条规则 + 4 个失败模式 + 8 项 pre-submit 自检
 
+## 🛑 并行优先原则(v2.6,主 session 必读)
+
+**主 session 收到任何"加 X / 改 Y / 实现 Z"的需求,第一件事不是写码,而是判断"能不能并行分解"。**
+
+- 先调 [`skills/task-decomposer/SKILL.md`](skills/task-decomposer/SKILL.md) 决策并出 DAG
+- 可并行 → 调 [`skills/parallel-orchestrator/SKILL.md`](skills/parallel-orchestrator/SKILL.md) 用 Task tool **一条消息派 N 个子 agent 真并行**
+- 串行 → 直接走 architect-task-writer + implementer
+
+**默认保守**:有疑虑就串行(并行错的代价 ≫ 串行慢)。但对真正可分的任务(N 个独立 provider / 微服务、各自独立的功能模块)**一定要并行,不要傻串行**——这是 v2.6 对"v2.5 比 v2.2 慢"问题的核心解答。
+
 简版(贴墙):
 
 1. **读再写** —— 读完整文件,不要扫
