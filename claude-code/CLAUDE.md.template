@@ -89,6 +89,19 @@ scripts/     # 自动化脚本          [health_report、triage_engine、verify_
 - 合并到 `main` 后由六阶段流水线自动部署(见 `.github/workflows/deploy.yml`)。
 - prod 启用熔断回滚:指标恶化自动回退。agent 不应手动操作 prod。
 
+## 🛑 合并与发布纪律(每次合并进 main 都要,强制)
+**任何 PR 合并进 `main` 后,必须立刻做这两件事,缺一不算完成:**
+1. **打 tag** —— 给这次合并打一个 git tag 并 push 到远端。命名按项目既有约定(语义化版本 `vX.Y.Z`,或日期 `vYYYY.MM.DD-N`)。tag 是**回滚锚点**。
+2. **写合并记录** —— 在 GitHub 基于该 tag 建一个 **Release**,正文写清这次合并**改了什么 / 为什么 / 影响面**(可由 PR 标题+描述生成)。Release 是**人能读的合并审计**。
+
+一条命令同时建 tag + Release:
+```bash
+gh release create <tag> --target main \
+  --title "<tag> — <一句话说明>" \
+  --notes "$(printf '改动:...\n原因:...\n影响面:...')"
+```
+> 铁律:**没打 tag、没写 Release 的合并 = 没合并完。** 不要直推 main 跳过 PR,也不要合了 PR 就走人。
+
 ## 给实现 agent 的工作约定
 1. **先出计划与风险,再写码。** 列出你识别到的失败模式、安全边界、可能的技术债。
 2. 不扩大范围;任务模板(`prompts/architect-task.md`)第 3 节之外的需求,先问架构师。
