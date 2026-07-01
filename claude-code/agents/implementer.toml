@@ -8,7 +8,7 @@ tools = ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 max_iterations = 25
 
 prompt_skill = "architect-task-writer"   # 默认配合的 skill
-# v2.4: agent-coding-discipline 在所有 implementer 任务前先读——9 条行为纪律(Karpathy adapted)
+# v2.4: agent-coding-discipline 在所有 implementer 任务前先读——10 条行为纪律(Karpathy adapted)
 required_skills = ["agent-coding-discipline", "feature-flag-setup"]
 optional_skills = ["api-endpoint-creator"]
 
