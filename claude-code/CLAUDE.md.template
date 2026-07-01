@@ -11,7 +11,7 @@
 ## 🛑 强制行为纪律(动手前必读)
 
 **任何写码 agent**(implementer / explorer / verifier-quality 等)**动手前**,必须先吃这份:
-- [`skills/agent-coding-discipline/SKILL.md`](skills/agent-coding-discipline/SKILL.md) — 9 条规则 + 4 个失败模式 + 8 项 pre-submit 自检
+- [`skills/agent-coding-discipline/SKILL.md`](skills/agent-coding-discipline/SKILL.md) — 10 条规则 + 4 个失败模式 + 8 项 pre-submit 自检
 
 ## 🛑 并行优先原则(v2.6,主 session 必读)
 
@@ -34,6 +34,7 @@
 7. **debug 不靠猜** —— 读完整 stack、复现、一次只改一处
 8. **依赖永久** —— 标准库优先,加新依赖必说理由
 9. **沟通** —— 说做了什么、为什么、有什么顾虑;不确定的事**精确**说出来
+10. **持续推进** —— 没到需要人工决断前**不中断、一直往下推**;并行时只有卡到人工决断的那个子 session 停,其余照常继续;能自己定的小选择别抛给人(反面=空停)
 
 4 个失败模式(发现 = 停):Kitchen Sink / Wrong Abstraction / Optimistic Path / Runaway Refactor。
 
