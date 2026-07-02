@@ -12,6 +12,14 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
+    # 纯文档 PR 不跑评审(省 CI + 时间);只要有一个非文档文件改动就照常跑
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.mdx'
+      - '**/*.txt'
+      - 'docs/**'
+      - 'LICENSE'
+      - '**/CHANGELOG*'
 
 jobs:
   review:
